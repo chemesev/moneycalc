@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z@vccq+2j3*bb3o21(rnw7b+9p76$73zc-)+9rg8(!duqyk!)='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://moneycalc.herokuapp.com/']
+ALLOWED_HOSTS = ['moneycalc.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -78,8 +78,8 @@ WSGI_APPLICATION = 'moneycalc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd7gsbufqb9c5p0',
         'HOST': 'ec2-54-228-235-185.eu-west-1.compute.amazonaws.com',
+        'NAME': 'd7gsbufqb9c5p0',
         'USER': 'qysjdctlrbfbhg',
         'PASSWORD': '2dfb7eb8bdc450be296daffb653c45952fee286df4bea5f2fbaccfcb70aca97f',
         'PORT': '5432',
@@ -122,14 +122,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(PROJECT_ROOT, 'static'),
+# )
