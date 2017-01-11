@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z@vccq+2j3*bb3o21(rnw7b+9p76$73zc-)+9rg8(!duqyk!)='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://moneycalc.herokuapp.com/']
 
 
 # Application definition
