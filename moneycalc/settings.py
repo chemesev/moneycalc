@@ -80,9 +80,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd7gsbufqb9c5p0',
         'HOST': 'ec2-54-228-235-185.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
         'USER': 'qysjdctlrbfbhg',
         'PASSWORD': '2dfb7eb8bdc450be296daffb653c45952fee286df4bea5f2fbaccfcb70aca97f',
+        'PORT': '5432',
     }
 }
 
@@ -124,8 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
-PROJECT_ROOT = (os.path.join(PROJECT_ROOT, 'static'),)
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
