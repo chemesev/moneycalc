@@ -16,7 +16,7 @@ def register_user(request):
                     form.cleaned_data['password1']
                     )
                     user.save()
-            return HttpResponse('Registered')
+            return render(request, 'registration/success.html', {})
     else:
         form = RegistrationForm()
     return render(request, 'registration/signup.html', {'form': form})
