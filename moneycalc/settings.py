@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'moneycalc.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd7gsbufqb9c5p0',
+        'HOST': 'ec2-54-228-235-185.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'qysjdctlrbfbhg',
+        'PASSWORD': '2dfb7eb8bdc450be296daffb653c45952fee286df4bea5f2fbaccfcb70aca97f',
     }
 }
 
