@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<head>
+    <title>Budget</title>
+</head>
+<body>
+    <h3>Your budget: {{ budget }}</h3>
+    <form method="post" action="{%url 'calculator:index'%}">
+        {% csrf_token %}
+        {{ form }}
+        <input type='submit'>
+    </form>
+</body>
