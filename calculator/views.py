@@ -33,3 +33,6 @@ def budget_edit(request):
         'form': form,
         'budget': calc.budget
         })
+
+def base(request):
+    return render(request, 'calculator/base.html', {})

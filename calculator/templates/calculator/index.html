@@ -3,10 +3,11 @@
     <title>Budget</title>
 </head>
 <body>
+    <h3>User: {{ request.user }}</h3>
     <h3>Your budget: {{ budget }}</h3>
     <form method="post" action="{%url 'calculator:index'%}">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <input type='submit'>
     </form>
 </body>

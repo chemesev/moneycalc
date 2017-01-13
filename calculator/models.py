@@ -11,6 +11,7 @@ class Calculator(models.Model):
     def edit_budget(self, add_to_budget, decrease_of_budget):
         self.budget += add_to_budget
         self.budget -= decrease_of_budget
-        return self.budget
+        return self.budge
+        
     def __str__(self):
         return "{}'s budget".format(self.user)
