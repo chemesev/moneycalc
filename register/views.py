@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
+from django.urls import reverse
 
 from .forms import RegistrationForm
 
@@ -20,3 +22,12 @@ def register_user(request):
     else:
         form = RegistrationForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+def profile(request):
+    return HttpResponseRedirect(reverse('calculator:budget_edit'))
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('blog:index'))
