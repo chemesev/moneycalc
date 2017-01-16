@@ -6,6 +6,7 @@ from django.urls import reverse
 
 from .forms import RegistrationForm
 
+
 def register_user(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -13,10 +14,10 @@ def register_user(request):
             if form.cleaned_data['password1'] and form.cleaned_data['password2']:
                 if form.cleaned_data['password1'] == form.cleaned_data['password2']:
                     user = User.objects.create_user(
-                    form.cleaned_data['username'],
-                    form.cleaned_data['email'],
-                    form.cleaned_data['password1']
-                    )
+                        form.cleaned_data['username'],
+                        form.cleaned_data['email'],
+                        form.cleaned_data['password1'],
+                        )
                     user.save()
             return render(request, 'registration/success.html', {})
     else:
