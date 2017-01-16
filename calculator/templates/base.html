@@ -19,9 +19,9 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         {% if user.is_authenticated %}
-                        <li><a href='#'>Hello, {{ user }}</a></li>
+                        <li><a href='{% url "registration:logout" %}'>Hello, {{ user }}. Press here to log out</a></li>
                         {% else %}
-                        <li><a href='#'>Hello, Stranger</a></li>
+                        <li><a href='{% url "registration:login" %}'>Hello, Stranger. Log in?</a></li>
                         {% endif %}
                     </ul>
 
