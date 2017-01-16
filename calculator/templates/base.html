@@ -7,29 +7,36 @@
         <title>{% block title %}Base{% endblock %}</title>
     </head>
     <body>
-            <nav class='nav navbar-default'>
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href='#'>Calculator</a></li>
-                    </div>
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href='{% url 'blog:index' %}'>Calculator</a>
+                </div>
+
                     <ul class="nav navbar-nav">
-                        <li class="text-center"><a href='#'>Change budget</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        {% if request.user.is_authenticated %}
-                        <li class="text-center"><a href='#'>Log in</a></li>
-                        {% else %}
-                        <li class="text-center"><a href='#'>Sign up</a></li>
-                        {% endif %}
-                        <!--<li class="text-center"><a href='#'>Link3</a></li>-->
+                        <li><a href='{% url "calculator:budget_edit" %}'>My Calculator</a></li>
                     </ul>
 
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                        <li><a href='#'>Hello, {{ user }}</a></li>
+                        {% else %}
+                        <li><a href='#'>Hello, Stranger</a></li>
+                        {% endif %}
+                    </ul>
+
+                </div>
             </nav>
+
         <div class="container">
             <div class="row">
-                    {% block content %}
-                    <h1>HEADER!!!</h1>
-                    {% endblock %}
+                {% block content %}
+                <div class="col-md-6">
+                    <h1>You forgot to make content block</h1>
+                </div>
+                {% endblock %}
             </div>
         </div>
+
     </body>
 </html>

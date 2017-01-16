@@ -31,4 +31,4 @@ def budget_edit(request):
 
 
 def base(request):
-    return render(request, 'calculator/base.html', {})
+    return render(request, 'base.html', {})
