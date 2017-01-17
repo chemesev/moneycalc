@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z@vccq+2j3*bb3o21(rnw7b+9p76$73zc-)+9rg8(!duqyk!)='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['dethikcalc.azurewebsites.net','moneycalc.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['djangochemes.azurewebsites.net','moneycalc.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
