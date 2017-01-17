@@ -2,6 +2,7 @@ import decimal
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 
 
 class Calculator(models.Model):
@@ -15,3 +16,56 @@ class Calculator(models.Model):
 
     def __str__(self):
         return "{}'s budget".format(self.user)
+
+
+class BudgetExpenses(models.Model):
+    calculator = models.ForeignKey(Calculator, on_delete=models.CASCADE)
+    value = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0,
+        validators=[
+            MinValueValidator(decimal.Decimal(0.01), message="Can't be negative")
+            ]
+         )
+    category_choices = (
+            ('FD', 'Food'),
+            ('CL', 'Clothes'),
+            ('EN', 'Entertainment'),
+            ('BL', 'Bills'),
+            ('OT', 'Other'),
+            )
+    category = models.CharField(max_length=2, choices=category_choices)
+    date = models.DateTimeField(auto_now_add=True)
+
+
+class BudgetIncome(models.Model):
+    calculator = models.ForeignKey(Calculator, on_delete=models.CASCADE)
+    value = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0,
+        validators=[
+            MinValueValidator(decimal.Decimal(0.01), message="Can't be negative")
+            ]
+         )
+    category_choices = (
+        ('SL', 'Salary'),
+        ('DP', 'Deposit'),
+        ('OT', 'Other'),
+    )
+    category = models.CharField(max_length=2, choices=category_choices)
+    date = models.DateTimeField(auto_now_add=True)
+# class BudgetChanges(models.Model):
+#     calculator = models.ForegnKey(Calculator, on_delete=models.CASCADE)
+#     budget_choices = (
+#         ('IN', "Income"),
+#         ('OUT', 'Outcome')
+#      )
+#     category_choices = (
+#         ('FD', 'Food'),
+#         ('CL', 'Clothes'),
+#         (''),
+#         )
+#     income_or_outcome = models.CharField(
+#         max_length=3,
+#         choices=budget_choices
+#         )
+#     category = models.Charfield()
+#     date = models.DateTimeField(auto_now_add=True)

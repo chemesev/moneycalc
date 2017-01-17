@@ -5,9 +5,19 @@
 {% block content %}
     <h3>User: {{ request.user }}</h3>
     <h3>Your budget: {{ budget }}</h3>
-    <form method="post" action="{%url 'calculator:budget_edit'%}">
+
+    <h3>Income:</h3>
+    <form method="post" action="{%url 'calculator:add_budget'%}">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ inc_form.as_p }}
+        <input type='submit'>
+    </form>
+    <br>
+    <br>
+    <h3>Expenses:</h3>
+    <form method="post" action="{%url 'calculator:del_budget'%}">
+        {% csrf_token %}
+        {{ exp_form.as_p }}
         <input type='submit'>
     </form>
 {% endblock %}
