@@ -27,17 +27,20 @@
         <p>Value: {{ inc.value }}</p>
         <p>Category: {{ inc.get_category_display }}</p>
         <p>Date: {{ inc.date }}</p>
+        <hr>
     {% endfor %}
     {% else %}
     <p>You have no income yet.</p>
     {% endif %}
     <br>
+
     <h2>Expenses</h2>
     {% if expenses %}
     {% for exp in expenses %}
         <p>Value: {{ exp.value }}</p>
         <p>Category: {{ exp.get_category_display }}</p>
         <p>Date: {{ exp.date }}</p>
+        <hr>
     {% endfor %}
     {% else %}
     <p>You have no expenses yet.</p>

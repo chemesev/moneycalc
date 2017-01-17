@@ -10,8 +10,8 @@ from .forms import CalculatorForm, ExpensesForm, IncomeForm
 @login_required
 def budget_edit(request):
     calc = Calculator.objects.get_or_create(user_id=request.user.pk)[0]
-    expenses = BudgetExpenses.objects.all()
-    income = BudgetIncome.objects.all()
+    expenses = BudgetExpenses.objects.filter(calculator=calc)
+    income = BudgetIncome.objects.filter(calculator=calc)
     inc_form = IncomeForm()
     exp_form = ExpensesForm()
     return render(request, 'calculator/index.html', {
@@ -56,6 +56,7 @@ def del_budget(request):
                 calculator=calc,
                 value=value,
                 category=exp_form.cleaned_data.get('category'),)
+            changes.save()
             calc.edit_budget(0, value)
             calc.save()
             return HttpResponseRedirect(reverse('calculator:budget_edit'))
