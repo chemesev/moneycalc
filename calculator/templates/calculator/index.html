@@ -5,44 +5,89 @@
 {% block content %}
     <h3>User: {{ request.user }}</h3>
     <h3>Your budget: {{ budget }}</h3>
+    <div class="col-md-5">
+        <h3>Income:</h3>
+        <form method="post" action="{%url 'calculator:add_budget'%}">
+            {% csrf_token %}
 
-    <h3>Income:</h3>
-    <form method="post" action="{%url 'calculator:add_budget'%}">
-        {% csrf_token %}
-        {{ inc_form.as_p }}
-        <input type='submit'>
-    </form>
-    <br>
-    <br>
-    <h3>Expenses:</h3>
-    <form method="post" action="{%url 'calculator:del_budget'%}">
-        {% csrf_token %}
-        {{ exp_form.as_p }}
-        <input type='submit'>
-    </form>
+            <div class="form-group">
+                <label for='id_value'>Value:</label>
+                <input class="form-control" id='id_value' type="number" value="0" step="1" required>
+            </div>
+            <div class="form-group">
+                <label for='id_category'>Category:</label>
+                <select class="form-control" id="id_category" name="category" required>
+                    <option value="SL">Salary</option>
+                    <option value="DP">Deposit</option>
+                    <option value="OT">Other</option>
+                </select>
+            </div>
+            <button type='submit' class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 
-    <h2>Income</h2>
+    <div class="col-md-5">
+        <h3>Expenses:</h3>
+        <form method="post" action="{%url 'calculator:del_budget'%}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for='id_value'>Value:</label>
+                <input class="form-control" id='id_value' type="number" value="0" step="1" required>
+            </div>
+            <div class="form-group">
+                <label for='id_category'>Category:</label>
+                <select class="form-control" id="id_category" name="category" required>
+                    <option value="SL">Salary</option>
+                    <option value="DP">Deposit</option>
+                    <option value="OT">Other</option>
+                </select>
+            </div>
+            <button type='submit' class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+
     {% if income %}
-    {% for inc in income %}
-        <p>Value: {{ inc.value }}</p>
-        <p>Category: {{ inc.get_category_display }}</p>
-        <p>Date: {{ inc.date }}</p>
-        <hr>
-    {% endfor %}
+    <table class="table table-hover">
+        <caption>Income</caption>
+        <thead>
+            <tr>
+                <th>Value</th>
+                <th>Category</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        {% for inc in income %}
+            <tr>
+                <th>{{ inc.value }} </th>
+                <th>{{ inc.get_category_display }}</th>
+                <th>{{ inc.date }}</th>
+            </tr>
+        {% endfor %}
+    </table>
     {% else %}
-    <p>You have no income yet.</p>
+    You have no income yet.
     {% endif %}
-    <br>
+    <hr>
 
-    <h2>Expenses</h2>
-    {% if expenses %}
-    {% for exp in expenses %}
-        <p>Value: {{ exp.value }}</p>
-        <p>Category: {{ exp.get_category_display }}</p>
-        <p>Date: {{ exp.date }}</p>
-        <hr>
-    {% endfor %}
+    {% if income %}
+    <table class="table table-hover">
+        <caption>Expenses</caption>
+        <thead>
+            <tr>
+                <th>Value</th>
+                <th>Category</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        {% for exp in expenses %}
+            <tr>
+                <th>{{ exp.value }} </th>
+                <th>{{ exp.get_category_display }}</th>
+                <th>{{ exp.date }}</th>
+            </tr>
+        {% endfor %}
+    </table>
     {% else %}
-    <p>You have no expenses yet.</p>
+    You have no expenses yet.
     {% endif %}
 {% endblock %}

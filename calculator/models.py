@@ -52,20 +52,3 @@ class BudgetIncome(models.Model):
     )
     category = models.CharField(max_length=2, choices=category_choices)
     date = models.DateTimeField(auto_now_add=True)
-# class BudgetChanges(models.Model):
-#     calculator = models.ForegnKey(Calculator, on_delete=models.CASCADE)
-#     budget_choices = (
-#         ('IN', "Income"),
-#         ('OUT', 'Outcome')
-#      )
-#     category_choices = (
-#         ('FD', 'Food'),
-#         ('CL', 'Clothes'),
-#         (''),
-#         )
-#     income_or_outcome = models.CharField(
-#         max_length=3,
-#         choices=budget_choices
-#         )
-#     category = models.Charfield()
-#     date = models.DateTimeField(auto_now_add=True)
