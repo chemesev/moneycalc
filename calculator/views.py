@@ -38,7 +38,7 @@ def add_budget(request):
                 value=value,
                 category=inc_form.cleaned_data.get('category'),)
             changes.save()
-            calc.add_budget(value)
+            calc.inc_budget(value)
             calc.save()
             return HttpResponseRedirect(reverse('calculator:budget_edit'))
     else:
