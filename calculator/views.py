@@ -38,7 +38,7 @@ def add_budget(request):
                 value=value,
                 category=inc_form.cleaned_data.get('category'),)
             changes.save()
-            calc.edit_budget(value, 0)
+            calc.add_budget(value)
             calc.save()
             return HttpResponseRedirect(reverse('calculator:budget_edit'))
     else:
@@ -57,7 +57,7 @@ def del_budget(request):
                 value=value,
                 category=exp_form.cleaned_data.get('category'),)
             changes.save()
-            calc.edit_budget(0, value)
+            calc.dec_budget(value)
             calc.save()
             return HttpResponseRedirect(reverse('calculator:budget_edit'))
     else:
