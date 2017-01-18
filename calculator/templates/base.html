@@ -20,6 +20,7 @@
                     {% if user.is_authenticated %}
                     <li><a href='{% url "registration:logout" %}'>Logout <span class='glyphicon glyphicon-log-out'></span></a></li>
                     {% else %}
+                    <li><a href="{% url 'registration:sign_up' %}"><span class='glyphicon glyphicon-check'></span> Sign up?</a></li>
                     <li><a href='{% url "registration:login" %}'>Log in <span class='glyphicon glyphicon-log-in'></span></a></li>
                     {% endif %}
                 </ul>
